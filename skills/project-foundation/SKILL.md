@@ -1,0 +1,98 @@
+---
+name: project-foundation
+description: Plan a project from zero and install the documentation system, agent rules, and working rhythm that keep it coherent as it grows. Use when starting a new project, bootstrapping an empty repo, planning an MVP or roadmap, or retrofitting docs and agent guardrails onto a project that lacks them.
+---
+
+# Project Foundation
+
+Interview the people who decide, turn that into a **just-in-time** plan, and install the machinery
+that keeps the plan and the code telling the same story a year later.
+
+Most project docs die the same way: nobody can tell, at the moment of a change, *which* page the
+change invalidated. That is not a discipline problem, it is a **routing** problem — and routing is
+something you can build.
+
+## What a finished run leaves behind
+
+| Artifact | Job |
+|---|---|
+| `docs/README.md` | Two indexes: one to **find** an answer, one to **route** a change to the pages it invalidates |
+| `docs/` tree | Project, architecture, internal handbook, development, and human-owned public docs |
+| `CONTEXT.md` | The ubiquitous language — one word per concept, so humans and agents picture the same thing |
+| `docs/01-project/roadmap.md` | Step-gated plan where each step earns its cost |
+| `docs/00-meta/deferred-ledger.md` | Everything deliberately skipped, each with a **trigger** that fires it back |
+| `CLAUDE.md` | The standing contract every agent reads |
+| `.claude/settings.json` | Permission rules and hooks that enforce what prose alone cannot |
+| `.claude/skills/` | `/next-step`, `/doc-check`, `/defer`, `/prototype` — the working rhythm, installed |
+
+## Invariants
+
+These hold in every phase. They are the skill.
+
+**1 — Load-bearing decisions only.** A decision belongs in the plan now if it is hard to reverse,
+constrains other decisions, or is forced from outside (compliance, platform, a partner's API).
+Everything else is noise at this stage and will change anyway. See
+[`reference/load-bearing.md`](reference/load-bearing.md).
+
+**2 — Defer with a trigger, never silently.** Skipping rate limiting for a demo is fine. Skipping it
+*and forgetting* is how it ships. Every skipped thing goes in the ledger with a **trigger** — the
+observable condition that makes it due (`before any real user data`, `before public launch`,
+`when this table passes ~10k rows`). A ledger entry without a trigger never fires, so it is not an
+entry. See [`reference/deferred-ledger.md`](reference/deferred-ledger.md).
+
+**3 — Public docs are human-owned.** `docs/05-public/` changes when a human asks for that change in
+the current conversation. Agents working anywhere near it **propose the diff in chat and wait**.
+Every other doc is the opposite: agents own it and must keep it current.
+
+**4 — Find the facts; ask for the decisions.** Anything the environment can answer — the stack, the
+scripts, the existing layout — you look up yourself. Only genuine decisions go to the operator, and
+each one carries your recommendation.
+
+**5 — Speak the operator's register.** Phase 1 establishes who is deciding and what they know. A
+non-technical founder and a staff engineer need different words for the same question. Get this
+wrong and every later answer is worth less.
+
+**6 — Create lazily.** A page exists when it has something real to say. Eight pages of live content
+beat sixteen where half are placeholders — placeholders teach agents that these docs are decoration.
+
+**7 — General before specific.** Prototype the widest slice first, then subsystems as they are
+needed. A subsystem built before the system it serves is a guess.
+
+## Phases
+
+Read **one phase file at a time**, work it to its completion criterion, then read the next. Reading
+ahead pulls the later phases into view and makes it tempting to rush the one in front of you — the
+interview phases are exactly where that costs the most.
+
+| # | Phase | Ends when |
+|---|---|---|
+| 1 | [Frame and operator](phases/1-frame-and-operator.md) | You know what is being built in one sentence, and who decides |
+| 2 | [Grill the product](phases/2-grill.md) | The product frontier is empty |
+| 3 | [Design the architecture](phases/3-architecture.md) | The architecture frontier is empty and every seam is justified |
+| 4 | [Build the roadmap](phases/4-roadmap.md) | Step 1 is unambiguous and every deferral has a trigger |
+| 5 | [Scaffold the docs](phases/5-scaffold.md) | Both indexes are complete and every row resolves |
+| 6 | [Install the guardrails](phases/6-guardrails.md) | Rules, permissions, hooks, and project skills are in place |
+| 7 | [Hand off](phases/7-handoff.md) | The operator knows what exists and what happens next |
+
+## Before phase 1
+
+**Read the ground first.** Manifests (`package.json`, `pyproject.toml`, `go.mod`, `Cargo.toml`),
+existing `README.md` / `CLAUDE.md` / `AGENTS.md` / `docs/`, the top-level layout, any migrations or
+infrastructure config. Two things change based on what you find:
+
+- **Empty or near-empty repo** → greenfield. Run all seven phases.
+- **Existing code** → retrofit. Phases 2 and 3 become *recovering* decisions already made rather
+  than making new ones: read the code, state what it appears to have decided, and have the operator
+  confirm or correct. Phase 4 plans forward from where the project actually is.
+
+**Check for an interrupted run.** If `docs/00-meta/foundation-session.md` exists, this is a resume:
+read it, tell the operator which phase it stopped at and what was settled, and continue from there
+rather than re-asking answered questions.
+
+## Adapt, never clobber
+
+Where a file already exists, read it, keep what is accurate, add what is missing, and say what you
+changed. A hand-written `CLAUDE.md` or `README.md` represents decisions someone made on purpose.
+
+Trim any template section this project will not use. A CLI tool has no SEO page; a static site has
+no database conventions. A checklist item nobody will ever act on trains the reader to skim.
