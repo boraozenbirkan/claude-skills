@@ -74,7 +74,15 @@ Now, with the answer in hand, plan the **next** step and only the next:
 Write step N+1 at full detail. Leave everything after it as a name and a question — those will be
 rewritten too, by the same process, and detailing them now produces fiction.
 
-## 8 — Report
+## 8 — Report, then collect the asks
 
 The question, the answer, what shipped, what was deferred, what changed in the plan, and what the
 next step will ask. In the operator's register.
+
+Then, **last and together**, a numbered **Your turn** block with everything you need back — the
+verdict you are waiting on, the placeholder only they can fill, the fired trigger they must rule on,
+the confirmation that step N+1 is right. Repeat each one even if it appeared inline above; a step
+report is long and the middle of it gets skimmed.
+
+Mark what blocks. "Step N+1 cannot start until you confirm the scope" and "answer whenever" deserve
+different urgency, and only you know which is which.

@@ -12,10 +12,6 @@ in their register — a non-technical operator gets outcomes and next actions, n
 public docs raises a permission prompt for a human. Show what that prompt looks like so the first
 one is not a surprise.
 
-**What still needs them.** Every placeholder you could not fill, as a short list of questions. Be
-specific — *"the roadmap has no launch date because you did not have one"* beats *"some sections are
-incomplete."*
-
 **What is deferred.** The ledger's size and its two or three nearest triggers. This is the operator's
 first sight of the mechanism that will interrupt them later; explain it once, now.
 
@@ -45,8 +41,33 @@ Two things are worth raising once, here, and then dropping:
   could settle in a conversation, say so. A week of building to answer a question a phone call
   answers is the exact waste the roadmap is shaped to avoid.
 
+## Close with the asks
+
+The handoff report is the longest message of the whole run, and the operator has just read six
+sections of what now exists. Everything you need back from them goes **last, together**, under
+**Your turn** — including anything already mentioned in passing above.
+
+    ## Your turn
+
+    1. **Fill the four placeholders in `docs/01-project/overview.md`** — I could not infer the
+       success criteria or the secondary audience. *(blocks: nothing; the roadmap works without it)*
+    2. **Confirm step 1 is the right first thing to learn** — the question it answers is
+       {{question}}. See "Where step 1 starts" above. *(blocks: starting step 1)*
+    3. **Decide whether to commit the foundation now.** *(blocks: nothing)*
+    4. **Say whether {{deferred item}} should stay deferred** — its trigger is {{trigger}}, and it
+       may already have fired. See "What is deferred". *(blocks: nothing yet)*
+
+Numbered so they can answer "1: yes, 3: skip". Each answerable without scrolling. Each pointing at
+the section above that holds the detail. Each marked with what it blocks, so the operator can tell
+what they can safely leave until tomorrow.
+
+This is also the operator's first demonstration of the rule their agents will now follow on every
+response. Getting it visibly right here is worth more than describing it.
+
 ## Done when
 
 The operator can say what the docs are for, what agents will do to them without being asked, what
-happens when something touches the public docs, and what step 1 is. Mark the run complete in
-`docs/00-meta/foundation-session.md`.
+happens when something touches the public docs, and what step 1 is — and the report ends with a
+numbered **Your turn** block holding every outstanding ask. Mark the run complete in
+`docs/00-meta/foundation-session.md`, and copy the unanswered asks into its **Open questions**
+section so they survive the session.

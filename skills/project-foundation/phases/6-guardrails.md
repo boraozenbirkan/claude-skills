@@ -69,6 +69,12 @@ Use `"type": "prompt"` handlers. They send the hook's input JSON to a fast model
 file, no `jq`, and no shell, so the same `settings.json` works on Windows, macOS, and Linux with
 nothing installed.
 
+**Install the closing-ask reminder first.** A `UserPromptSubmit` command hook running a plain `echo`
+injects its output into the context on every turn — that event is one of the few whose stdout Claude
+actually sees. It costs no model call and about 45 tokens, and it holds invariant 1 in front of the
+model as the session grows long, which is exactly when a buried question starts getting missed. The
+`CLAUDE.md` rule is the mechanism; this is what stops it decaying.
+
 Generate one entry per **high-value, low-frequency** routing trigger — the paths where a missed doc
 update is expensive and the edit is rare. Migrations, auth and permissions, integration and env
 config, public routes. Deriving the `if` patterns from the routing table you just wrote keeps the
@@ -128,8 +134,8 @@ the thought *"I'll note that later."*
 ## Done when
 
 Agent rules are written where this project's agents read; the `Edit(/docs/05-public/**)` ask rule is
-in `.claude/settings.json`; the routing hooks are generated from the routing table; the four project
-skills exist with this project's real paths; and you have told the operator what the permission
+in `.claude/settings.json`; the closing-ask reminder fires on `UserPromptSubmit`; the routing hooks
+are generated from the routing table; the four project skills exist with this project's real paths; and you have told the operator what the permission
 prompt on public docs will look like when it fires.
 
 Append to `docs/00-meta/foundation-session.md`.

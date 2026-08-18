@@ -1,7 +1,9 @@
 # Phase 3 — Design the architecture
 
 Same frontier method as phase 2, now on how the thing is built. Same load-bearing filter: settle
-what is expensive to change, leave the rest to the step that needs it.
+what is expensive to change, leave the rest to the step that needs it. Same rule about rounds, too —
+every round's questions go last, together, as one numbered block, repeated even if asked inline
+above.
 
 The register still applies. A non-technical operator gets architecture questions framed as cost,
 speed, and lock-in — *"this choice means changing payment providers later takes a week instead of a

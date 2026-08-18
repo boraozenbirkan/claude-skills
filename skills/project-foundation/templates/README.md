@@ -24,7 +24,7 @@ after copying.
 
 ## Which pages to create
 
-Decided by [`../reference/project-types.md`](../reference/project-types.md) and by the skill's sixth
+Decided by [`../reference/project-types.md`](../reference/project-types.md) and by the skill's seventh
 invariant: **a page exists when it has something real to say.** A CLI tool gets no SEO page; a static
 site gets no database page.
 

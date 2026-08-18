@@ -37,10 +37,15 @@ What it leaves behind in the target project:
 | `CONTEXT.md` | The project's ubiquitous language |
 | `docs/00-meta/deferred-ledger.md` | Everything deliberately skipped, each with a **trigger** that fires it back |
 | `CLAUDE.md` | The standing contract every agent reads |
-| `.claude/settings.json` | A permission rule making public-doc edits require a human, plus routing hooks |
+| `.claude/settings.json` | A permission rule making public-doc edits require a human, plus routing and closing-ask hooks |
 | `.claude/skills/` | `/next-step`, `/doc-check`, `/defer`, `/prototype` |
 
-Three ideas do most of the work:
+Four ideas do most of the work:
+
+- **Collect the asks at the end.** Every response that needs something from a person ends with a
+  numbered `Your turn` block repeating every question and action — even the ones already asked
+  inline. Long responses get skimmed; the end is the only place guaranteed to be read. Enforced in
+  `CLAUDE.md` and reinforced every turn by a `UserPromptSubmit` hook.
 
 - **Routing over discipline.** Docs rot because nobody can tell, at the moment of a change, which
   page it invalidated. A routing table of matchable triggers turns that from a judgement call into a

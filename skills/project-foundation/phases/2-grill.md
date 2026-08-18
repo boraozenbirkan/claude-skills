@@ -33,6 +33,18 @@ Number them per round. Every question carries a recommendation — see the regis
 For rounds that are cleanly multiple-choice, `AskUserQuestion` (max 4 per call) renders better than
 prose. Fall back to numbered prose when the frontier is wider than four or the answers are open.
 
+## Every round ends with its questions
+
+Whatever else a round's message contains — findings from a lookup, a reflected-back summary, the
+reasoning behind a recommendation — **the questions go last, together, as one numbered block.**
+
+A round that scatters questions through paragraphs of context gets partially answered, and the
+missed ones look settled when they are merely unread. Put the context above, the asks at the bottom,
+and say which section each one comes from so the operator can scroll up when they want the detail.
+
+If a question already appeared inline earlier in the message, repeat it in the block anyway. The
+duplication costs three lines and buys an answer.
+
 ## Ask only what is load-bearing
 
 The tree could branch forever. It should not. Before adding a question to the frontier, apply the

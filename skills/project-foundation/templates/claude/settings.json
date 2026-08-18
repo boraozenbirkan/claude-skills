@@ -5,6 +5,16 @@
     ]
   },
   "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo \"Reminder: end this response with a Your turn section listing every question, decision, and action needed from the user, numbered and restated in full, even where already asked inline above. If nothing is needed, say so in one line.\""
+          }
+        ]
+      }
+    ],
     "PostToolUse": [
       {
         "matcher": "Edit|Write",

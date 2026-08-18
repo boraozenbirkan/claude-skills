@@ -29,33 +29,43 @@ something you can build.
 
 These hold in every phase. They are the skill.
 
-**1 — Load-bearing decisions only.** A decision belongs in the plan now if it is hard to reverse,
+**1 — Collect the asks at the end of every response.** Any response needing something from the
+operator ends with a **Your turn** section repeating every question, decision, and action — all of
+them, together, restated in full **even when they already appeared inline above**. A long response
+gets skimmed, and anything asked in the middle of one is missed; the end is the only place
+guaranteed to be read. Number them, make each answerable without scrolling back, point to the
+section holding the full context, and mark which ones block. When nothing is needed, say so in one
+line rather than omitting the section.
+
+This one binds the whole run. Every phase below asks the operator for something.
+
+**2 — Load-bearing decisions only.** A decision belongs in the plan now if it is hard to reverse,
 constrains other decisions, or is forced from outside (compliance, platform, a partner's API).
 Everything else is noise at this stage and will change anyway. See
 [`reference/load-bearing.md`](reference/load-bearing.md).
 
-**2 — Defer with a trigger, never silently.** Skipping rate limiting for a demo is fine. Skipping it
+**3 — Defer with a trigger, never silently.** Skipping rate limiting for a demo is fine. Skipping it
 *and forgetting* is how it ships. Every skipped thing goes in the ledger with a **trigger** — the
 observable condition that makes it due (`before any real user data`, `before public launch`,
 `when this table passes ~10k rows`). A ledger entry without a trigger never fires, so it is not an
 entry. See [`reference/deferred-ledger.md`](reference/deferred-ledger.md).
 
-**3 — Public docs are human-owned.** `docs/05-public/` changes when a human asks for that change in
+**4 — Public docs are human-owned.** `docs/05-public/` changes when a human asks for that change in
 the current conversation. Agents working anywhere near it **propose the diff in chat and wait**.
 Every other doc is the opposite: agents own it and must keep it current.
 
-**4 — Find the facts; ask for the decisions.** Anything the environment can answer — the stack, the
+**5 — Find the facts; ask for the decisions.** Anything the environment can answer — the stack, the
 scripts, the existing layout — you look up yourself. Only genuine decisions go to the operator, and
 each one carries your recommendation.
 
-**5 — Speak the operator's register.** Phase 1 establishes who is deciding and what they know. A
+**6 — Speak the operator's register.** Phase 1 establishes who is deciding and what they know. A
 non-technical founder and a staff engineer need different words for the same question. Get this
 wrong and every later answer is worth less.
 
-**6 — Create lazily.** A page exists when it has something real to say. Eight pages of live content
+**7 — Create lazily.** A page exists when it has something real to say. Eight pages of live content
 beat sixteen where half are placeholders — placeholders teach agents that these docs are decoration.
 
-**7 — General before specific.** Prototype the widest slice first, then subsystems as they are
+**8 — General before specific.** Prototype the widest slice first, then subsystems as they are
 needed. A subsystem built before the system it serves is a guess.
 
 ## Phases

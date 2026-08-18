@@ -74,6 +74,10 @@ should not be possible"* — bugs in the idea, found for the price of an afterno
 
 A description of a prototype is not a prototype. Do not accept a verdict on one.
 
+End the handover message with a numbered **Your turn** block: where to open it, the specific things
+to try, and the question you need answered. "Let me know what you think" gets a shrug; "does step 3
+of the cancellation walkthrough match what should happen?" gets an answer.
+
 ## Capture, then throw away
 
 1. **Write the answer into the roadmap step** — question, verdict, reasoning. If the decision is

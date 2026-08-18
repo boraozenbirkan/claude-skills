@@ -2,7 +2,8 @@
 # Install this repo's skills into ~/.claude/skills.
 #
 # Symlinks each skill under skills/ so edits here take effect without reinstalling.
-# Any existing directory at the destination is backed up to <name>.backup-<timestamp> first.
+# Any existing directory is backed up to ~/.claude/skills-backups/ -- outside the skills directory,
+# because Claude Code loads every directory under skills/ as a skill.
 #
 #   ./install.sh                     # all skills
 #   ./install.sh project-foundation  # one skill
@@ -10,9 +11,12 @@ set -euo pipefail
 
 source_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/skills"
 target_dir="${HOME}/.claude/skills"
+# Backups live outside skills/ on purpose: Claude Code loads every directory in there as a skill,
+# so a backup left alongside would show up in the skill list and burn context on every turn.
+backup_dir="${HOME}/.claude/skills-backups"
 only="${1:-}"
 
-mkdir -p "$target_dir"
+mkdir -p "$target_dir" "$backup_dir"
 
 found=0
 for skill in "$source_dir"/*/; do
@@ -21,8 +25,12 @@ for skill in "$source_dir"/*/; do
   found=1
   dest="$target_dir/$name"
 
-  if [ -e "$dest" ] || [ -L "$dest" ]; then
-    backup="$dest.backup-$(date +%Y%m%d-%H%M%S)"
+  if [ -L "$dest" ]; then
+    # A symlink from a previous run holds no content of its own; replace rather than archive it.
+    rm "$dest"
+    echo "  removed previous link"
+  elif [ -e "$dest" ]; then
+    backup="$backup_dir/$name.backup-$(date +%Y%m%d-%H%M%S)"
     mv "$dest" "$backup"
     echo "  backed up existing -> $backup"
   fi

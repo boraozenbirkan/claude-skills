@@ -45,12 +45,19 @@ fire any trigger? Working in an area with an open entry is the cheapest moment t
 
 Report fired triggers even when the answer is to re-defer. A fire is a decision point, not a task.
 
-## 6 — Report
+## 6 — Report, then collect the asks
 
 - Pages updated, and what changed in each
 - Rows that matched but needed nothing, and why
 - Ledger triggers fired, and what was decided
-- Anything you could not resolve, as a question
+
+Then end with a numbered **Your turn** block holding everything that needs a person: the ambiguities
+you could not resolve, the public-doc corrections awaiting approval, the fired triggers you are
+re-deferring and want confirmed. Restate each in full, even where it appeared above, and mark what
+blocks.
+
+Nothing outstanding is worth one line saying so — "nothing needed from you" reads very differently
+from a report that simply ends.
 
 ## Public docs
 

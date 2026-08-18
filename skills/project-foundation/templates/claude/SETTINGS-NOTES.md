@@ -30,6 +30,29 @@ permission patterns match command prefixes rather than file paths. The `CLAUDE.m
 guard README inside `docs/05-public/` cover that path. Closing it hard means denying the shell
 editors by name, which costs false positives; offer it, do not impose it.
 
+## The per-turn closing-ask reminder
+
+```json
+"UserPromptSubmit": [{ "hooks": [{ "type": "command", "command": "echo \"Reminder: ...\"" }] }]
+```
+
+`UserPromptSubmit` is one of the few events whose stdout on exit 0 is **added to the context Claude
+can see** (alongside `UserPromptExpansion` and `SessionStart`); on every other event, stdout goes to
+the debug log and nowhere else. So a plain `echo` injects the reminder on every single turn, for no
+model call and no script file.
+
+That per-turn repetition is the point. The `CLAUDE.md` rule is read once at session start, and a
+response-formatting rule is exactly the kind that decays as a session grows — which is precisely
+when responses get long enough for a buried question to be missed. This puts it back in front of the
+model at every prompt, for roughly 45 tokens.
+
+`echo` is a builtin in bash, PowerShell, and cmd, and the text deliberately avoids apostrophes,
+`$`, `!`, and shell metacharacters so the same line is safe in all three. On cmd the quotes are
+echoed literally, which is cosmetically imperfect and functionally fine.
+
+Remove this entry if the operator finds it noisy. The `CLAUDE.md` rule stands on its own; this is
+reinforcement, not the mechanism.
+
 ## The routing hooks
 
 `PostToolUse` fires at the moment of the change — when the routing question is answerable and the

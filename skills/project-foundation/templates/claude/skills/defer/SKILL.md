@@ -51,7 +51,9 @@ it is still true.
 - Mention it in the current step's **Deferred here** line in
   [`docs/01-project/roadmap.md`](../../../docs/01-project/roadmap.md).
 - If the area has a page with a deferred table — `security.md` does — add the row there too.
-- Tell the operator in one line: what was skipped, and what will bring it back.
+- Tell the operator, in the **Your turn** block at the end of your response: what was skipped, and
+  what will bring it back. A deferral mentioned only in passing mid-response is a deferral they did
+  not agree to.
 
 ## When something is too big to defer
 

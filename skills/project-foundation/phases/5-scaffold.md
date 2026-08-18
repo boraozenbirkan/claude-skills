@@ -23,7 +23,7 @@ docs/
 
 Numbered so reading order is obvious and new pages have an unambiguous home. Rename sections to fit
 the project; keep the numbering. Which pages actually get created is decided by
-[`../reference/project-types.md`](../reference/project-types.md) and by invariant 6 — **a page
+[`../reference/project-types.md`](../reference/project-types.md) and by invariant 7 — **a page
 exists when it has something real to say.**
 
 ## `docs/README.md` — two indexes, two jobs

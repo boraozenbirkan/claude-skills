@@ -10,6 +10,26 @@ you need a term it does not define, define it there.
 **Who you are talking to:** [`docs/00-meta/personas.md`](docs/00-meta/personas.md) — read it before
 explaining anything.
 
+## End every response with the asks collected
+
+Any response that needs something from a person ends with a **Your turn** section repeating **every**
+question, decision, and action required of them — all of them, together, at the very end.
+
+Repeat them even when they already appeared inline above. That duplication is deliberate and
+wanted: a long response gets skimmed, and anything asked in the middle of one is missed. The end is
+the only place guaranteed to be read.
+
+Each item:
+
+- **Numbered**, so a reply can be "1: yes, 2: option B".
+- **Answerable without scrolling.** Restate enough of the question to decide on. "See above" defeats
+  the whole point of the section.
+- **Pointing back** to the section that holds the full context, for anyone who wants it.
+- **Marked when it blocks** — say what stops until it is answered, and what continues regardless.
+
+When nothing is needed, say so in one line. Silence and forgetting look identical from the outside,
+and the reader should not have to work out which one this is.
+
 ## Documentation is part of the change
 
 A change to behaviour, structure, or a documented rule **is not done until the docs covering it are
