@@ -12,6 +12,8 @@ My personal Claude Code skills.
 ./install.ps1
 ```
 
+Second one (.ps1) links to skill to the repo, the first one (.sh) coppies over to your skills. With the first one, you need to re-run it after every update, but with the second one you just need to fetch the update to your local from git, that's all.
+
 Links each skill under `skills/` into `~/.claude/skills/`, so edits in this repo take effect without
 reinstalling. Anything already at the destination is backed up first. Pass a skill name to install
 just one; pass `-Copy` on Windows to copy instead of linking.
