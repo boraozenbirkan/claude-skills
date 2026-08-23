@@ -8,6 +8,14 @@ A **seam** is a place where behaviour can be changed without editing in that pla
 free — every one is indirection paid for on every read — so each exists for a named reason, recorded
 here.
 
+## On this page
+
+- [Seams](#seams)
+- [Deliberately not seamed](#deliberately-not-seamed)
+- [Vocabulary](#vocabulary)
+- [Tests applied here](#tests-applied-here)
+- [Module notes](#module-notes)
+
 ## Seams
 
 | Seam | Interface | Adapters today | The pivot it protects |

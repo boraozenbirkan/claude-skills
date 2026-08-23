@@ -4,6 +4,16 @@
 
 {{ONE_SENTENCE_DESCRIPTION}}
 
+## On this page
+
+- [What this is](#what-this-is)
+- [Who it serves](#who-it-serves)
+- [The core loop](#the-core-loop)
+- [What this is not](#what-this-is-not)
+- [The grand plan](#the-grand-plan)
+- [Success](#success)
+- [Core concepts](#core-concepts)
+
 ## What this is
 
 {{Two or three paragraphs. What the product does, for whom, and what they do instead today.

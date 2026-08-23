@@ -8,6 +8,14 @@ the answers that could invalidate the most work arrive first.
 **Current step:** {{N — name}}
 **Riskiest open assumption:** {{the thing that would hurt most to be wrong about}}
 
+## On this page
+
+- [How a step is worked](#how-a-step-is-worked)
+- [Step 1 — {{name}}](#step-1--name)
+- [Step 2 — {{name}}](#step-2--name)
+- [Later — named only](#later--named-only)
+- [Shipped](#shipped)
+
 ## How a step is worked
 
 1. **Prototype** the uncertain part as throwaway code that answers the step's question and nothing
@@ -16,7 +24,8 @@ the answers that could invalidate the most work arrive first.
 3. **Build the real thing** — only the validated part, behind its seam.
 4. **Update the docs the change routed to**, in the same change — `/doc-check`.
 5. **Sweep the ledger** for triggers this step fired.
-6. **Re-plan** the next step from what was actually learned — `/next-step`.
+6. **Re-plan** the next step from what was actually learned — `/plan-step`, as its own invocation
+   on the strong model, deliberately not in the tail of the execution session.
 
 ## Step 1 — {{name}}
 
@@ -27,6 +36,13 @@ the answers that could invalidate the most work arrive first.
 **Unlocks:** {{which steps this makes possible}}
 **Deferred here:** {{ledger ids created}}
 
+**Direction**
+
+- **Shape:** {{where the code goes in this layout, and which seam owns it}}
+- **Stack it introduces:** {{the libraries, services, or infra this step adds — or `nothing new`}}
+- **Pipeline stages touched:** {{named stages from `../02-architecture/pipelines.md`}}
+- **Docs it will update:** {{the routing-table rows this step will fire}}
+
 ## Step 2 — {{name}}
 
 **Question it answers:** {{...}}
@@ -35,6 +51,13 @@ the answers that could invalidate the most work arrive first.
 **Done when:** {{...}}
 **Unlocks:** {{...}}
 **Deferred here:** {{...}}
+
+**Direction**
+
+- **Shape:** {{...}}
+- **Stack it introduces:** {{...}}
+- **Pipeline stages touched:** {{...}}
+- **Docs it will update:** {{...}}
 
 ## Later — named only
 
@@ -62,4 +85,9 @@ Rules for this page:
   can sign up, log out, and log back in" is.
 - Two steps deep at full detail, no more. Everything beyond is a name and a question.
 - A step whose failure would invalidate three earlier steps is in the wrong place. Move it earlier.
+- The Direction block is what stops the step being re-planned at execution time by whoever happens
+  to be running. If it cannot be filled in, the architecture has not been decided yet - go and
+  decide it rather than writing a step that only sounds specific.
+- Planning happens in `/plan-step`, which asks for the strong model first. Execution happens in
+  `/next-step`. Keeping them apart is the point; a plan is cheap to make and expensive to get wrong.
 -->

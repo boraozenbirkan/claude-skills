@@ -9,6 +9,20 @@ The register still applies. A non-technical operator gets architecture questions
 speed, and lock-in — *"this choice means changing payment providers later takes a week instead of a
 day"* — not as a technology comparison.
 
+**Check the model before you start.** This phase and phase 4 are where a weaker model costs the
+most: the decisions made here constrain everything built afterwards, and a shallow architecture
+reads exactly like a good one until something has to change. Say so in one line and pause —
+
+> Next I design the architecture. This is one of the two phases where model quality shows up in the
+> result, so it is worth a look at your status line before I start. Say go, or change it and say go.
+
+— then carry on. One line, one pause, twice in the whole run.
+
+**In retrofit or refactor mode**, this phase reads the architecture out of the code and asks the
+operator to confirm or correct it, rather than choosing one. Refactor mode then feeds phase 4 a list
+of what is moving and what is staying —
+[`../reference/existing-projects.md`](../reference/existing-projects.md).
+
 ## The architecture frontier
 
 - **Runtime and deployment target.** Where it runs decides more than which framework writes it.
@@ -30,7 +44,6 @@ stage complex enough to have its own internal steps, write its **sub-pipeline** 
 
 This is the single most useful page in the architecture docs, because it is the page an agent reads
 to answer *"where does my change go?"* — and it is the one nobody writes without being asked.
-Sketch it in this phase; phase 5 writes it to `docs/02-architecture/pipelines.md`.
 
 Keep it at the level of stages and data, not functions. Function names go stale in a week; stages
 survive a rewrite.
@@ -95,10 +108,30 @@ Format and numbering: [`../templates/project/docs/adr/0000-template.md`](../temp
 The rejected alternatives matter as much as the choice. Unrecorded, someone re-proposes GraphQL
 every six months and nobody remembers why the answer was no.
 
+## Write the architecture down in this phase
+
+Three files, now, before phase 4 starts — not later in phase 5:
+
+| File | From the template | Holds |
+|---|---|---|
+| `docs/02-architecture/technical-map.md` | [technical-map.md](../templates/project/docs/02-architecture/technical-map.md) | The stack, where code lives, what runs where |
+| `docs/02-architecture/pipelines.md` | [pipelines.md](../templates/project/docs/02-architecture/pipelines.md) | The main pipeline and every sub-pipeline, as stages |
+| `docs/02-architecture/modularity.md` | [modularity.md](../templates/project/docs/02-architecture/modularity.md) | Each seam, and the named pivot that justifies it |
+
+Plus any ADR that passed all three tests above.
+
+**An architecture that exists only in the conversation is not an architecture.** It vanishes at the
+next `/clear`, it cannot be reviewed by anyone who was not in the room, and phase 4 has nothing
+concrete to point its steps at — which is exactly how a roadmap ends up as a list of feature names
+with no direction in it. Writing these three now is also the test of whether the decisions are real:
+a stack you cannot list and a pipeline you cannot stage are decisions that have not been made yet.
+
+Phase 5 indexes these pages and adds the rest. It does not write these.
+
 ## Done when
 
-The architecture frontier is empty; the main pipeline and its sub-pipelines are written down; every
-seam traces to a named likely pivot; every deferred technical concern is in the ledger with a
-trigger; and the ADRs that pass all three tests exist.
+The architecture frontier is empty; `technical-map.md`, `pipelines.md`, and `modularity.md` exist on
+disk with this project's real content; every seam traces to a named likely pivot; every deferred
+technical concern is in the ledger with a trigger; and the ADRs that pass all three tests exist.
 
 Append to `docs/00-meta/foundation-session.md`.

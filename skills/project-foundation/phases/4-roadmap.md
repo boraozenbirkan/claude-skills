@@ -4,6 +4,26 @@ A roadmap is not a list of features in the order someone thought of them. It is 
 learning**: each step buys the answer to a question, and the steps are sequenced so the answers that
 could invalidate the most work arrive first.
 
+## Check the model before you start
+
+Planning is the expensive thing to get wrong. Everything downstream — what gets built, in what
+order, on what stack — inherits the quality of this phase, and a weak plan reads exactly like a
+strong one right up until a week has been spent on it.
+
+Before the first step is drafted, say so and pause:
+
+> Next I plan the roadmap. This is the part where a weaker model costs the most, so it is worth
+> checking your status line before I start — are the model and effort level shown there what you
+> want for planning? Say go, or change them and say go.
+
+One line, one pause. The same checkpoint is installed into the project as `/plan-step` in phase 6,
+so every re-plan after this run gets it too.
+
+**In refactor mode** the steps are moves rather than features, and the ordering rule sharpens:
+seams before moves, strangle rather than rewrite, every step ships, and deletion of the old path is
+its own step with its own **Done when**. See
+[`../reference/existing-projects.md`](../reference/existing-projects.md).
+
 ## Order by riskiest assumption
 
 Every plan rests on assumptions. Rank them by *what it costs to be wrong* × *how likely wrong is*,
@@ -28,7 +48,7 @@ down at the start rather than discovered at the end, and every later step has so
 
 ## The step format
 
-Every step, no exceptions:
+Every step, no exceptions. Two blocks: **what it is for**, and **how it is built**.
 
 ```md
 ### Step N — {{name}}
@@ -39,6 +59,13 @@ Every step, no exceptions:
 **Done when:** {{observable — a demo someone can drive, a number, a working path}}
 **Unlocks:** {{which steps this makes possible}}
 **Deferred here:** {{ledger entries this step creates}}
+
+**Direction**
+
+- **Shape:** {{where the code goes in this project's layout, and which seam owns it}}
+- **Stack it introduces:** {{the specific libraries, services, or infra this step adds — or `nothing new`}}
+- **Pipeline stages touched:** {{named stages from `docs/02-architecture/pipelines.md`}}
+- **Docs it will update:** {{the routing-table rows this step will fire}}
 ```
 
 **Not building** is the line that does the work. Without it, scope arrives silently: someone builds
@@ -48,13 +75,38 @@ until it needs maintaining. Naming the omission makes adding it a decision inste
 **Done when** must be observable from outside. *"Auth is implemented"* is not a criterion —
 *"a new user can sign up, log out, and log back in"* is.
 
+### Why the Direction block exists
+
+A plan that says only *what* to build is a plan that gets **re-planned at execution time**, by
+whoever happens to be running, on whatever model happens to be loaded. That is the failure this
+block prevents: the four lines carry the structural decisions forward in writing, so the agent
+executing the step is following a decision rather than making one.
+
+They are also the honest test of whether phase 3 produced anything. If you cannot name the shape,
+the stack delta, and the stages a step touches, the architecture was discussed and not decided — go
+back rather than writing a step that only sounds specific.
+
+Keep them short. **Shape** is a sentence or two naming real directories and one seam, not a design
+document. `nothing new` is a perfectly good answer for **Stack it introduces**, and a step that
+introduces three things at once is usually two steps.
+
 ## Plan two steps deep
 
-Write step 1 and step 2 at full detail. Everything after that is a **named step with its question
-and nothing else** — because the answers from steps 1 and 2 will rewrite them.
+Write step 1 and step 2 at full detail, Direction block included. Everything after that is a **named
+step with its question and nothing else** — because the answers from steps 1 and 2 will rewrite them.
 
 Detailing step 6 today is writing fiction that later reads as commitment. The roadmap is re-planned
-at the end of each step, from what was actually learned, by `/next-step`.
+one step at a time, from what was actually learned, by `/plan-step`.
+
+## Write it to disk in this phase
+
+Create `docs/01-project/roadmap.md` now, from
+[the template](../templates/project/docs/01-project/roadmap.md), with steps 1 and 2 in full and the
+rest named. Do not leave it for phase 5.
+
+A plan that exists only in the conversation is gone at the next `/clear`, cannot be reviewed by
+anyone who was not in the room, and gets silently re-invented by the next agent. The session file is
+a log of what was decided; the roadmap is the artefact that gets worked from. Both, now.
 
 ## Detect the future needs now — and write them down, not build them
 
@@ -82,7 +134,8 @@ Record this in the roadmap page, because it is the rhythm every later agent inhe
 3. **Build the real thing** — only the validated part, behind its seam.
 4. **Update the docs the change routed to**, in the same change.
 5. **Sweep the ledger** for triggers this step has fired.
-6. **Re-plan** the next step from what was learned.
+6. **Re-plan** the next step from what was learned — a separate invocation, `/plan-step`, so that
+   planning does not silently inherit the model an execution session was running on.
 
 ## Guard against the expensive kinds of waste
 
@@ -99,8 +152,10 @@ Record this in the roadmap page, because it is the rhythm every later agent inhe
 
 ## Done when
 
-Step 1 is unambiguous enough that an agent could start it without asking a question; steps beyond 2
-are named with their questions only; every future need surfaced by the project type is a ledger
-entry with a trigger; and the operator has agreed that step 1 is the right first thing to learn.
+`docs/01-project/roadmap.md` exists on disk; steps 1 and 2 carry every field including the Direction
+block; step 1 is unambiguous enough that an agent could start it without asking a question; steps
+beyond 2 are named with their questions only; every future need surfaced by the project type is a
+ledger entry with a trigger; and the operator has agreed that step 1 is the right first thing to
+learn.
 
 Append to `docs/00-meta/foundation-session.md`.

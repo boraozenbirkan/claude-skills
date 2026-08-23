@@ -1,12 +1,13 @@
 ---
 name: next-step
-description: Work the current roadmap step end to end, then re-plan the next one from what was learned.
+description: Work the current roadmap step end to end, verify it, and record what it answered. Planning the next step is a separate skill.
 disable-model-invocation: true
 ---
 
 # Next step
 
-One step of the roadmap, worked to completion, then the plan updated from reality.
+One step of the roadmap, worked to completion and recorded honestly. Planning the next one is
+`/plan-step`, deliberately not this.
 
 ## 1 — Orient
 
@@ -62,17 +63,19 @@ question was not worth asking, and that is worth knowing when planning the next 
 
 Log anything skipped along the way with `/defer`.
 
-## 7 — Re-plan
+## 7 — Stop at the planning boundary
 
-Now, with the answer in hand, plan the **next** step and only the next:
+Do **not** plan step N+1 here. Planning runs under `/plan-step`, on the strong model, as its own
+invocation.
 
-- What is the riskiest assumption remaining?
-- Does the answer just learned reorder anything?
-- What is the smallest thing that answers the next question?
-- What will that step deliberately not build?
+The reason is the model. Execution is often run on something cheap and fast, which is the right
+call for building a thing already decided and the wrong call for deciding what to build. A plan made
+in the tail of an execution session inherits whatever model that session happened to be using, and
+nobody notices, because a weak plan reads exactly like a strong one until a week has been spent on
+it.
 
-Write step N+1 at full detail. Leave everything after it as a name and a question — those will be
-rewritten too, by the same process, and detailing them now produces fiction.
+So finish here, leave step N+1 as its name and its question, and put `/plan-step` in the **Your
+turn** block below.
 
 ## 8 — Report, then collect the asks
 
@@ -81,8 +84,8 @@ next step will ask. In the operator's register.
 
 Then, **last and together**, a numbered **Your turn** block with everything you need back — the
 verdict you are waiting on, the placeholder only they can fill, the fired trigger they must rule on,
-the confirmation that step N+1 is right. Repeat each one even if it appeared inline above; a step
-report is long and the middle of it gets skimmed.
+and **run `/plan-step` when ready** as its own item, naming the model it wants. Repeat each one even
+if it appeared inline above; a step report is long and the middle of it gets skimmed.
 
 Mark what blocks. "Step N+1 cannot start until you confirm the scope" and "answer whenever" deserve
 different urgency, and only you know which is which.

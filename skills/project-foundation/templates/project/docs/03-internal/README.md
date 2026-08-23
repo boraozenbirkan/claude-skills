@@ -8,6 +8,13 @@ for people who may never read the code, and never assuming they can.
 If you are a developer: the engineering docs are in [`../02-architecture/`](../02-architecture/) and
 [`../04-development/`](../04-development/). This section stays free of code on purpose.
 
+## On this page
+
+- [How do I…](#how-do-i)
+- [Who does what](#who-does-what)
+- [When something looks wrong](#when-something-looks-wrong)
+- [Words used here](#words-used-here)
+
 ## How do I…
 
 The fastest route to an answer. Add a row the first time someone has to ask.

@@ -15,15 +15,25 @@ one is not a surprise.
 **What is deferred.** The ledger's size and its two or three nearest triggers. This is the operator's
 first sight of the mechanism that will interrupt them later; explain it once, now.
 
-**Where step 1 starts.** The question step 1 answers, and the command that begins it.
+**Where step 1 starts.** The question step 1 answers, its Direction block, and the command that
+begins it.
 
-## Retrofits: say what is now wrong
+**How planning and building are split.** `/next-step` works a step; `/plan-step` plans the next one
+and asks for the strong model first. Say this explicitly — an operator who runs execution on a cheap
+model is doing the right thing, and needs to know that the planning skill is where they switch back.
+
+## Retrofits and refactors: say what is now wrong
 
 On an existing project, pre-existing docs may describe behaviour the code no longer has. Say so
 explicitly, page by page, and offer to bring them in sync as a separate piece of work.
 
 Quietly leaving a stale page in a freshly built index is the worst outcome of this whole run: the
 index makes it look authoritative.
+
+In refactor mode, add two lines the operator will otherwise have to reconstruct later: **what is not
+moving**, and **when both paths stop coexisting** — the second being a ledger entry with a trigger,
+and the one most likely to be forgotten. See
+[`../reference/existing-projects.md`](../reference/existing-projects.md).
 
 ## Kick off step 1
 
@@ -67,7 +77,8 @@ response. Getting it visibly right here is worth more than describing it.
 ## Done when
 
 The operator can say what the docs are for, what agents will do to them without being asked, what
-happens when something touches the public docs, and what step 1 is — and the report ends with a
-numbered **Your turn** block holding every outstanding ask. Mark the run complete in
+happens when something touches the public docs, which skill plans and which one builds, and what
+step 1 is — the three index checks print nothing — and the report ends with a numbered **Your turn**
+block holding every outstanding ask. Mark the run complete in
 `docs/00-meta/foundation-session.md`, and copy the unanswered asks into its **Open questions**
 section so they survive the session.

@@ -8,6 +8,13 @@ Skipping something for a demo is good engineering. Skipping it *and forgetting* 
 an entry with `/defer` at the moment of the decision — the ledger only works while writing to it is
 cheaper than the thought "I will note that later".
 
+## On this page
+
+- [Open](#open)
+- [Closed](#closed)
+- [Triggers are observable, never dates](#triggers-are-observable-never-dates)
+- [When a trigger fires](#when-a-trigger-fires)
+
 ## Open
 
 ### DL-001 — {{title}}
@@ -15,7 +22,7 @@ cheaper than the thought "I will note that later".
 **Trigger:** {{observable condition — see below}}
 **Why deferred:** {{the reasoning that made it safe at the time, so a future reader can check whether it still holds}}
 **What is needed:** {{enough that whoever picks this up does not have to re-derive the problem}}
-**Raised:** {{step N}} · **Area:** {{security | scale | seo | accessibility | data | ops | legal | product}}
+**Raised:** {{step N | foundation}} · **Area:** {{security | scale | seo | accessibility | data | ops | legal | product | docs}}
 
 <!-- Newest at the top. Number sequentially; never reuse a number. -->
 

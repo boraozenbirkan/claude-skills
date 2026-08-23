@@ -6,6 +6,11 @@ tree**, worked in rounds, where each answer reshapes what is worth asking next.
 This phase settles *what the project is*. Phase 3 settles how it is built. Keep them apart —
 architecture questions asked before the product is pinned down get answered twice.
 
+**In retrofit or refactor mode**, most of this frontier is already answered by the code and by
+whoever has been running the thing. The job becomes separating what was **decided** from what merely
+**happened** — see [`../reference/existing-projects.md`](../reference/existing-projects.md). Do not
+re-ask what a repository already states; invariant 5 costs the most patience here.
+
 ## The frontier
 
 The **frontier** is every decision whose prerequisites are already settled: the questions you can

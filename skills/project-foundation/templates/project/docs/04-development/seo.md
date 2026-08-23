@@ -5,6 +5,17 @@
 Ordered roughly by cost-to-fix-later: the structural items near the top are painful to retrofit once
 a site has been indexed, the content items further down can be improved anytime.
 
+## On this page
+
+- [One canonical origin — decide before launch](#one-canonical-origin--decide-before-launch)
+- [Per-route metadata](#per-route-metadata)
+- [Indexing controls](#indexing-controls)
+- [Structured data](#structured-data)
+- [URLs](#urls)
+- [Performance](#performance)
+- [Content structure](#content-structure)
+- [Launch checklist](#launch-checklist)
+
 ## One canonical origin — decide before launch
 
 Pick apex (`example.com`) or `www`, redirect the other, and never serve both.

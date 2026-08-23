@@ -2,6 +2,17 @@
 
 # Database & migrations
 
+## On this page
+
+- [Migration files are the source of truth](#migration-files-are-the-source-of-truth)
+- [Every new table needs](#every-new-table-needs)
+- [Verifying before it reaches production](#verifying-before-it-reaches-production)
+- [Functions](#functions)
+- [Enums](#enums)
+- [Seed and reference data](#seed-and-reference-data)
+- [Rolling back](#rolling-back)
+- [Checklist](#checklist)
+
 ## Migration files are the source of truth
 
 ```

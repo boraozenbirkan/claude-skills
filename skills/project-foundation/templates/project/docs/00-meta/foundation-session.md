@@ -16,7 +16,7 @@ here — do not let this grow into a second, competing source of truth.
 - **What:** {{the agreed one-sentence description}}
 - **Project type:** {{type}}
 - **Operator:** {{who decides}} · **Register:** {{non-technical | technical, different domain | domain-experienced}}
-- **Mode:** {{greenfield | retrofit}}
+- **Mode:** {{greenfield | retrofit | refactor}}
 
 ## Phase log
 
@@ -32,13 +32,16 @@ here — do not let this grow into a second, competing source of truth.
 
 ### Phase 3 — Architecture · {{status}}
 
+- **Model and effort:** {{what was in use while these decisions were made}}
 - **Settled:** {{decisions}}
 - **Seams, and the pivot each protects:** {{seam, expected change}}
+- **Pages written:** technical-map.md, pipelines.md, modularity.md
 - **ADRs written:** {{numbers}}
 - **Deferred:** {{ledger ids}}
 
 ### Phase 4 — Roadmap · {{status}}
 
+- **Model and effort:** {{what was in use while this plan was made}}
 - **Riskiest assumption:** {{what}}
 - **Step 1:** {{the question it answers}}
 - **Deferred:** {{ledger ids}}

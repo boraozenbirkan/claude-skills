@@ -5,6 +5,17 @@
 Decisions made once so they do not get re-litigated per file. Each has a reason; if a reason stops
 holding, change the rule here rather than quietly deviating in one place.
 
+## On this page
+
+- [Money](#money)
+- [Identifiers](#identifiers)
+- [Snapshotting](#snapshotting)
+- [Foreign keys](#foreign-keys)
+- [Naming](#naming)
+- [Where logic lives](#where-logic-lives)
+- [Comments](#comments)
+- [Accessibility](#accessibility)
+
 ## Money
 
 **Integer minor units** (pence, cents), in columns named `*_pence` / `*_cents`. Never floats, never

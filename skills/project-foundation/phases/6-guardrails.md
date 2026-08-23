@@ -65,20 +65,20 @@ false positives.
 `PostToolUse` hooks fire at the moment of the change — the moment the routing question is actually
 answerable — which beats a reminder at the end of the session, after attention has moved on.
 
-Use `"type": "prompt"` handlers. They send the hook's input JSON to a fast model and need no script
-file, no `jq`, and no shell, so the same `settings.json` works on Windows, macOS, and Linux with
-nothing installed.
-
 **Install the closing-ask reminder first.** A `UserPromptSubmit` command hook running a plain `echo`
 injects its output into the context on every turn — that event is one of the few whose stdout Claude
 actually sees. It costs no model call and about 45 tokens, and it holds invariant 1 in front of the
 model as the session grows long, which is exactly when a buried question starts getting missed. The
 `CLAUDE.md` rule is the mechanism; this is what stops it decaying.
 
-Generate one entry per **high-value, low-frequency** routing trigger — the paths where a missed doc
-update is expensive and the edit is rare. Migrations, auth and permissions, integration and env
-config, public routes. Deriving the `if` patterns from the routing table you just wrote keeps the
-two in step.
+Give that entry **no `if` field.** On any event that is not a tool event, a hook with `if` set never
+runs at all.
+
+### A routing reminder is a constant — emit it as a constant
+
+Every routing hook is a `command` handler that echoes one fixed JSON object. `PostToolUse` honours
+`systemMessage` and delivers it to Claude, and the `if` matcher has already decided the hook
+applies.
 
 ```json
 {
@@ -88,10 +88,10 @@ two in step.
         "matcher": "Edit|Write",
         "hooks": [
           {
-            "type": "prompt",
+            "type": "command",
             "if": "Edit(supabase/migrations/**)",
-            "prompt": "A migration was just written. Reply with exactly this JSON and nothing else: {\"systemMessage\": \"Routing: migrations map to docs/02-architecture/data-model.md. Update it in this change.\"}\n\nHook input: $ARGUMENTS",
-            "timeout": 30
+            "command": "echo '{\"systemMessage\": \"Routing: migrations map to docs/02-architecture/data-model.md. Update it in this change.\"}'",
+            "statusMessage": "Doc routing"
           }
         ]
       }
@@ -100,12 +100,39 @@ two in step.
 }
 ```
 
-Keep the list short. A hook on every source edit spends a model call per keystroke-sized change and
-trains everyone to ignore the output. Four to six entries is a healthy ceiling; the routing table
-carries the rest.
+**Do not reach for `"type": "prompt"` here.** It sends the hook input to a fast model and asks for a
+fixed JSON reply — and a prompt that opens *"A migration was just written…"* reads to that model as
+a claim to check rather than an instruction to obey. It checks, decides the claim does not hold, and
+writes prose about it. Prose is not the JSON the event expects, so **the routing message never
+arrives** — and the judgement it just made had already been made, correctly, by the `if` matcher.
+The model call bought nothing and lost the reminder, on every matching edit.
+
+A `command` hook cannot do this: same bytes every time, no model, no latency.
+
+`echo '{"systemMessage": "..."}'` prints identically in `bash` and `powershell`, which are the two
+shells Claude Code uses by default. That holds only while the message contains **no apostrophe** —
+one closes the string and breaks the JSON. Write *"the operators handbook"*, not *"the operator's
+handbook"*, and prefer a hyphen to an em dash.
+
+Generate one entry per **high-value, low-frequency** routing trigger — the paths where a missed doc
+update is expensive and the edit is rare. Migrations, auth and permissions, integration and env
+config, public routes, admin screens. Deriving the `if` patterns from the routing table you just
+wrote keeps the two in step.
+
+Where one path needs two different messages — a public route versus an admin route — write **two
+entries with two globs**, never one entry that asks the hook to work out which it is looking at.
+That is the judgement call this whole section removes.
+
+Keep the list short. A hook on every source edit trains everyone to ignore hook output, at which
+point the mechanism is worse than nothing. Four to six entries is a healthy ceiling; the routing
+table carries the rest.
 
 Template: [`../templates/claude/settings.json`](../templates/claude/settings.json). Merge into an
 existing `settings.json` rather than replacing it, and tell the operator what you added.
+
+**Verify every message parses** before moving on — the check is at the bottom of
+[`../templates/claude/SETTINGS-NOTES.md`](../templates/claude/SETTINGS-NOTES.md). A hook whose JSON
+is malformed fails silently; nothing tells you the reminder stopped arriving.
 
 ## 6.4 — Project skills
 
@@ -114,10 +141,22 @@ Copy from [`../templates/claude/skills/`](../templates/claude/skills/) into the 
 
 | Skill | What it is for |
 |---|---|
-| `/next-step` | Work the current roadmap step, then re-plan the next one from what was learned |
+| `/plan-step` | Plan the next roadmap step in writing, on the strong model |
+| `/next-step` | Work the current roadmap step, verify it, and record what it answered |
 | `/doc-check` | Hold the current diff against the routing table and update what it hit |
 | `/defer` | Add a ledger entry with a trigger, in one line, at the moment of the decision |
 | `/prototype` | Build throwaway code that answers one question |
+
+**`/plan-step` and `/next-step` are two skills on purpose.** Planning and building fail differently:
+a weak plan costs a week of building the wrong thing, weak building costs an afternoon. Sessions get
+run on cheap models for good reasons, and a re-plan tacked onto the end of one silently inherits
+that model — which nobody notices, because a weak plan reads exactly like a strong one until the
+week is gone.
+
+`/plan-step` carries `model: opus` and `effort: high` in its frontmatter, which applies for the rest
+of that turn and then releases. Adjust those two lines to whatever this operator's strong model is.
+The override can be refused by an organisation allowlist without saying so, which is why the skill
+also opens by asking the operator to glance at their status line.
 
 These live in the project rather than in a personal skills directory on purpose: they are wired to
 this project's paths, they travel with the repo to teammates and CI, and cloud sessions load them
@@ -135,7 +174,8 @@ the thought *"I'll note that later."*
 
 Agent rules are written where this project's agents read; the `Edit(/docs/05-public/**)` ask rule is
 in `.claude/settings.json`; the closing-ask reminder fires on `UserPromptSubmit`; the routing hooks
-are generated from the routing table; the four project skills exist with this project's real paths; and you have told the operator what the permission
-prompt on public docs will look like when it fires.
+are `command` handlers generated from the routing table, and every one of their JSON messages
+parses; the five project skills exist with this project's real paths; and you have told the operator
+what the permission prompt on public docs will look like when it fires.
 
 Append to `docs/00-meta/foundation-session.md`.

@@ -21,7 +21,8 @@ just one; pass `-Copy` on Windows to copy instead of linking.
 ### `project-foundation`
 
 Plans a project from zero and installs the documentation system, agent rules, and working rhythm
-that keep it coherent as it grows. Also retrofits onto an existing project.
+that keep it coherent as it grows. Runs in three modes — **greenfield**, **retrofit** onto working
+code, or **refactor** where the reshaping is the job.
 
 Seven phases, read one at a time: frame the project and profile whoever is deciding · grill the
 product until the design tree is exhausted · design the architecture around the pivots you actually
@@ -38,9 +39,12 @@ What it leaves behind in the target project:
 | `docs/00-meta/deferred-ledger.md` | Everything deliberately skipped, each with a **trigger** that fires it back |
 | `CLAUDE.md` | The standing contract every agent reads |
 | `.claude/settings.json` | A permission rule making public-doc edits require a human, plus routing and closing-ask hooks |
-| `.claude/skills/` | `/next-step`, `/doc-check`, `/defer`, `/prototype` |
+| `.claude/skills/` | `/plan-step`, `/next-step`, `/doc-check`, `/defer`, `/prototype` |
 
-Four ideas do most of the work:
+Everything it installs is **project-local** — `<project>/CLAUDE.md` and `<project>/.claude/`,
+committed with the repo. Nothing is written to `~/.claude/`.
+
+Five ideas do most of the work:
 
 - **Collect the asks at the end.** Every response that needs something from a person ends with a
   numbered `Your turn` block repeating every question and action — even the ones already asked
@@ -55,6 +59,12 @@ Four ideas do most of the work:
 - **Plan only what is load-bearing.** Settle what is hard to reverse, constrains other decisions, or
   is forced from outside. Everything else is decided at the step that needs it, with real
   information.
+
+- **Planning is a separate job from building.** A weak plan costs a week; weak building costs an
+  afternoon. So `/plan-step` and `/next-step` are two skills, the planning one asks for the strong
+  model before it starts, and every step is written down with its shape, its stack delta, and the
+  pipeline stages it touches — so the agent executing it is following a decision rather than
+  re-making one on whatever model it happens to be running.
 
 ## Credits
 

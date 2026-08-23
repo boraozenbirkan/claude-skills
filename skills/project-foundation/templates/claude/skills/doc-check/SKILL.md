@@ -38,17 +38,33 @@ A new concept, screen, table, integration, or rule that no page describes means 
 page needs a section or a new page is needed. Either way, **add its rows to both indexes** — the
 Find index and the routing table — or the next agent will not know it exists.
 
-## 5 — Sweep the ledger
+## 5 — Run the structural checks
+
+The three checks at the bottom of [`docs/README.md`](../../../docs/README.md), from the project
+root. They cover what reading cannot: a page no index reaches, an index row pointing at nothing, and
+an `On this page` block that no longer matches its own headings.
+
+All three print nothing when the docs are sound. Fix anything they print before moving on — each one
+is a lookup that will fail silently for somebody later.
+
+While you are there, check the two growth triggers. A section holding more than about six pages, or
+a page past roughly 300 lines, splits into a subdirectory with its own index — the rule is in
+[`docs/00-meta/how-to-use-these-docs.md`](../../../docs/00-meta/how-to-use-these-docs.md). Do not
+split on your own initiative mid-change; raise it in the **Your turn** block, because moving pages
+repoints every row that referenced them.
+
+## 6 — Sweep the ledger
 
 Read [`docs/00-meta/deferred-ledger.md`](../../../docs/00-meta/deferred-ledger.md). Did this change
 fire any trigger? Working in an area with an open entry is the cheapest moment to clear it.
 
 Report fired triggers even when the answer is to re-defer. A fire is a decision point, not a task.
 
-## 6 — Report, then collect the asks
+## 7 — Report, then collect the asks
 
 - Pages updated, and what changed in each
 - Rows that matched but needed nothing, and why
+- What the three checks printed, and what you fixed
 - Ledger triggers fired, and what was decided
 
 Then end with a numbered **Your turn** block holding everything that needs a person: the ambiguities

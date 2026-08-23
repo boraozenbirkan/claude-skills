@@ -4,6 +4,15 @@
 
 The orientation page. What the system is made of and where to find each part.
 
+## On this page
+
+- [Stack](#stack)
+- [Where the code lives](#where-the-code-lives)
+- [How a request flows](#how-a-request-flows)
+- [Environments](#environments)
+- [What we depend on and do not control](#what-we-depend-on-and-do-not-control)
+- [Current stage](#current-stage)
+
 ## Stack
 
 | Layer | Choice | Why this one |

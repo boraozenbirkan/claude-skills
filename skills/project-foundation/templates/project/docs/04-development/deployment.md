@@ -4,6 +4,16 @@
 
 How code reaches users.
 
+## On this page
+
+- [The path](#the-path)
+- [Environments](#environments)
+- [What runs before it ships](#what-runs-before-it-ships)
+- [Migrations](#migrations)
+- [Rolling back](#rolling-back)
+- [Secrets and configuration](#secrets-and-configuration)
+- [After a deploy](#after-a-deploy)
+
 ## The path
 
 {{commit}} → {{...}} → {{...}} → {{production}}

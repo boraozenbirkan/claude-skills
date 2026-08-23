@@ -8,6 +8,13 @@ What happens between a user acting and the result landing. This is the page to r
 Written as stages and data, not as functions. Function names go stale in a week; stages survive a
 rewrite.
 
+## On this page
+
+- [Main pipeline — {{name}}](#main-pipeline--name)
+- [Sub-pipeline — {{name}}](#sub-pipeline--name)
+- [Sub-pipeline — {{name}}](#sub-pipeline--name)
+- [Not yet built](#not-yet-built)
+
 ## Main pipeline — {{name}}
 
 The path the core loop takes.

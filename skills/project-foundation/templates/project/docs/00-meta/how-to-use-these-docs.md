@@ -4,6 +4,17 @@
 
 Three rules. They are the whole system.
 
+## On this page
+
+- [1 — The index is the entry point](#1--the-index-is-the-entry-point)
+- [2 — Docs change in the same change as the code](#2--docs-change-in-the-same-change-as-the-code)
+- [3 — Public docs belong to humans](#3--public-docs-belong-to-humans)
+- [Page headers](#page-headers)
+- [Contents blocks](#contents-blocks)
+- [When a section grows into folders](#when-a-section-grows-into-folders)
+- [Writing for the two audiences](#writing-for-the-two-audiences)
+- [What does not belong here](#what-does-not-belong-here)
+
 ## 1 — The index is the entry point
 
 [`../README.md`](../README.md) carries a **Find index** (where is X?) and a **Routing table** (I
@@ -33,6 +44,43 @@ Every page opens with one line:
 - **Status** — `current` for what exists; `pending` for what is designed but not built. `pending` is
   what lets a design be written down without the page lying about the code.
 - **Owner** — `agents`, except under `05-public/` where it is `humans`.
+
+## Contents blocks
+
+Any page with four or more `##` sections carries an `On this page` list directly above its first
+`##`, one link per section, in order:
+
+    ## On this page
+
+    - [Roles](#roles)
+    - [What is enforced today](#what-is-enforced-today)
+    - [What is deferred](#what-is-deferred)
+    - [Secrets](#secrets)
+
+Anchors are the GitHub form: lowercase, delete every character that is not a letter, digit, space,
+hyphen, or underscore, then turn each remaining space into a hyphen. Deletion happens first, so
+`## Step 1 — {{name}}` anchors as `#step-1--name` — two hyphens, because the dash left a gap.
+
+A human skims the list to decide whether this is the right page. An agent reads it as **the page's
+claim about what it covers**, which is the question behind *"does my change belong here, or does
+this page need a new section?"* — so a new `##` means a new row, in the same edit.
+
+Pages under four sections skip it, and so does `adr/`, where every record has the same five
+sections.
+
+## When a section grows into folders
+
+Sections start flat, and stay flat while flat is honest. **Split one into subdirectories when it
+holds more than about six pages, or when a single page passes roughly 300 lines** — both countable,
+which is what makes them triggers rather than opinions.
+
+Splitting means: create the subdirectory, give it a `README.md` holding that section's own Find
+index, link that README from [`../README.md`](../README.md) in place of the rows it absorbs, and
+repoint the routing rows for every page that moved.
+
+The orphan check searches every `README.md` at any depth, so a page indexed only by its section
+README still counts as reachable. Nesting is free once it is earned; what costs is nesting a section
+that has three pages in it.
 
 ## Writing for the two audiences
 

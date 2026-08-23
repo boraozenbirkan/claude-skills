@@ -5,6 +5,14 @@
 Everything in this directory is published, or written to be published, on {{WHERE}}. It is the only
 part of `docs/` that agents do not maintain.
 
+## On this page
+
+- [The rule](#the-rule)
+- [Why this directory is different](#why-this-directory-is-different)
+- [What belongs here](#what-belongs-here)
+- [What does not](#what-does-not)
+- [Publishing](#publishing)
+
 ## The rule
 
 **These files change when a human asks for that change, in the conversation where they ask it.**

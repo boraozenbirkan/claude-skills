@@ -7,6 +7,13 @@ X?"*. **Routing** answers *"I changed X — what does that invalidate?"*
 
 ---
 
+## On this page
+
+- [Find index](#find-index)
+- [Routing table](#routing-table)
+- [The sections](#the-sections)
+- [Keeping this honest](#keeping-this-honest)
+
 ## Find index
 
 Questions in the words someone would actually ask them.
@@ -94,20 +101,49 @@ designed and not yet built — a design written down honestly, not a promise the
 
 ## Keeping this honest
 
-Both directions have to hold: every page is reachable from an index, and every index row resolves
-to a page that exists.
+Three checks. All three print nothing when the docs are sound. Run them before calling any change
+complete.
+
+**Every page is reachable from an index.** Searches every `README.md` at any depth, so a page listed
+only in its section index still counts:
 
 ```bash
 cd docs && for f in $(find . -name '*.md' ! -name 'README.md' ! -path './adr/*' | sed 's|^\./||'); do grep -rqF "$(basename "$f")" --include='README.md' . || echo "ORPHAN: $f"; done
 ```
 
+**Every index row resolves.** Links are resolved relative to the index that holds them:
+
 ```bash
-grep -oE '\]\([^)]+\.md\)' docs/README.md | sed 's/^](//;s/)$//' | while read -r l; do [ -e "docs/$l" ] || echo "DEAD ROW: $l"; done
+cd docs && find . -name 'README.md' | while read -r idx; do d=$(dirname "$idx"); grep -oE '\]\([^)]+\.md[^)]*\)' "$idx" | sed 's/^](//;s/)$//;s/#.*$//' | while read -r l; do case "$l" in http*|*'{{'*) continue;; esac; [ -e "$d/$l" ] || echo "DEAD ROW: $idx -> $l"; done; done
 ```
 
-The first finds pages no index mentions — invisible to anyone who starts here. The second finds rows
-pointing at nothing. `adr/` is skipped in the first: decision records are indexed by number in their
-own directory, and a Find-index row per ADR would be noise.
+**Every contents block matches its headings.** A page with four or more `##` sections carries an
+`On this page` list, and that list is a claim about what the page covers:
 
-Both should print nothing. When a page's content and its trigger drift apart, fix the trigger. A
-stale routing table is worse than none, because it returns confident answers that are wrong.
+```bash
+python - <<'EOF'
+import re, pathlib
+def slug(t):
+    t = re.sub(r'[^\w\s-]', '', t.strip().lower())
+    return t.replace(' ', '-')
+for f in sorted(pathlib.Path('docs').rglob('*.md')):
+    if 'adr' in f.parts:
+        continue
+    text = f.read_text(encoding='utf-8')
+    h2 = [l[3:].strip() for l in text.splitlines() if l.startswith('## ')]
+    body = [h for h in h2 if h != 'On this page']
+    if len(body) < 4:
+        continue
+    if 'On this page' not in h2:
+        print('NO CONTENTS:', f); continue
+    missing = [h for h in body if '(#%s)' % slug(h) not in text]
+    if missing:
+        print('CONTENTS STALE:', f, missing)
+EOF
+```
+
+`adr/` is skipped in the first and third: decision records are indexed by number in their own
+directory, and they all share one five-section shape.
+
+When a page's content and its trigger drift apart, fix the trigger. A stale routing table is worse
+than none, because it returns confident answers that are wrong.

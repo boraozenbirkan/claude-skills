@@ -3,7 +3,7 @@
 Files copied into the **target project**, not read as instructions for this skill.
 
     project/    → the project root: CLAUDE.md, CONTEXT.md, and the docs/ tree
-    claude/     → the project's .claude/: settings.json and the four project skills
+    claude/     → the project's .claude/: settings.json and the five project skills
 
 ## Copy, then cut
 
@@ -15,9 +15,13 @@ decoration, and after that they stop reading all of them.
 
 ## Relative links in `claude/skills/`
 
-The four project skills link with `../../../docs/...`, which resolves from where they are
+The five project skills link with `../../../docs/...`, which resolves from where they are
 **installed** — `<project>/.claude/skills/<name>/SKILL.md` — back to the project root. Inside this
 templates tree those paths point nowhere, which is expected. Leave them alone.
+
+`plan-step/SKILL.md` also carries `model:` and `effort:` in its frontmatter. Those are the one part
+of a template that is a live setting rather than prose — adjust them to the operator's strong model,
+and do not strip them.
 
 The paths under `project/` mirror the project root exactly, so links there resolve both here and
 after copying.
@@ -28,5 +32,9 @@ Decided by [`../reference/project-types.md`](../reference/project-types.md) and 
 invariant: **a page exists when it has something real to say.** A CLI tool gets no SEO page; a static
 site gets no database page.
 
-Every page that is created needs rows in both indexes of `docs/README.md`, and the two verification
-commands at the bottom of that file should print nothing before the run is called done.
+Every page that is created needs rows in both indexes of `docs/README.md`, an `On this page` block
+if it has four or more sections, and the three verification commands at the bottom of that file
+printing nothing before the run is called done.
+
+Contents blocks in these templates are already correct for the templates as written. **Cutting a
+section means cutting its row**, and the third check will tell you if you forgot.

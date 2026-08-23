@@ -11,6 +11,16 @@ purpose and written into [the ledger](../00-meta/deferred-ledger.md) with a trig
 the bottom of this page lists what is currently deferred and when it comes due — read it before
 assuming a control exists.
 
+## On this page
+
+- [Identity](#identity)
+- [Roles](#roles)
+- [Where enforcement lives](#where-enforcement-lives)
+- [Data we hold](#data-we-hold)
+- [Secrets](#secrets)
+- [Verifying access rules](#verifying-access-rules)
+- [Deferred, with triggers](#deferred-with-triggers)
+
 ## Identity
 
 - **Who can log in:** {{end users, staff, both, service clients}}

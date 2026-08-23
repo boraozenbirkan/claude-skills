@@ -20,32 +20,34 @@
         "matcher": "Edit|Write",
         "hooks": [
           {
-            "type": "prompt",
+            "type": "command",
             "if": "Edit(REPLACE_WITH_MIGRATIONS_GLOB)",
-            "prompt": "A database migration was just written. Reply with exactly this JSON object and nothing else:\n{\"systemMessage\": \"Routing: migrations map to docs/02-architecture/data-model.md. Update it in this change, before reporting the work complete.\"}\n\nHook input: $ARGUMENTS",
-            "timeout": 30,
-            "statusMessage": "Checking doc routing"
+            "command": "echo '{\"systemMessage\": \"Routing: migrations map to docs/02-architecture/data-model.md. Update it in this change, before reporting the work complete.\"}'",
+            "statusMessage": "Doc routing"
           },
           {
-            "type": "prompt",
+            "type": "command",
             "if": "Edit(REPLACE_WITH_AUTH_GLOB)",
-            "prompt": "A file governing authentication or access control was just edited. Reply with exactly this JSON object and nothing else:\n{\"systemMessage\": \"Routing: auth and access rules map to docs/02-architecture/security.md. Update it in this change, and check docs/00-meta/deferred-ledger.md for security entries this change may have fired.\"}\n\nHook input: $ARGUMENTS",
-            "timeout": 30,
-            "statusMessage": "Checking doc routing"
+            "command": "echo '{\"systemMessage\": \"Routing: auth and access rules map to docs/02-architecture/security.md. Update it in this change, and check docs/00-meta/deferred-ledger.md for security entries this change may have fired.\"}'",
+            "statusMessage": "Doc routing"
           },
           {
-            "type": "prompt",
+            "type": "command",
             "if": "Edit(REPLACE_WITH_ENV_OR_CONFIG_GLOB)",
-            "prompt": "Environment or third-party service configuration was just edited. Reply with exactly this JSON object and nothing else:\n{\"systemMessage\": \"Routing: env vars and external services map to docs/02-architecture/integrations.md, and any new setup step to docs/04-development/local-setup.md. Update what applies in this change.\"}\n\nHook input: $ARGUMENTS",
-            "timeout": 30,
-            "statusMessage": "Checking doc routing"
+            "command": "echo '{\"systemMessage\": \"Routing: env vars and external services map to docs/02-architecture/integrations.md, and any new setup step to docs/04-development/local-setup.md. Update what applies in this change.\"}'",
+            "statusMessage": "Doc routing"
           },
           {
-            "type": "prompt",
-            "if": "Edit(REPLACE_WITH_ROUTES_GLOB)",
-            "prompt": "A route or page was just added or changed. Decide from the file path in the hook input whether this is a public, indexable route or an internal one. If public, reply with exactly:\n{\"systemMessage\": \"Routing: public routes map to docs/04-development/seo.md — check metadata, canonical URL, and sitemap. New pipeline stages map to docs/02-architecture/pipelines.md.\"}\nIf internal or admin, reply with exactly:\n{\"systemMessage\": \"Routing: admin and staff screens map to docs/03-internal/. Update the workflow page for any change to fields, statuses, or steps.\"}\nReply with the JSON object and nothing else.\n\nHook input: $ARGUMENTS",
-            "timeout": 30,
-            "statusMessage": "Checking doc routing"
+            "type": "command",
+            "if": "Edit(REPLACE_WITH_PUBLIC_ROUTES_GLOB)",
+            "command": "echo '{\"systemMessage\": \"Routing: public routes map to docs/04-development/seo.md - check metadata, canonical URL, and sitemap. A new pipeline stage maps to docs/02-architecture/pipelines.md.\"}'",
+            "statusMessage": "Doc routing"
+          },
+          {
+            "type": "command",
+            "if": "Edit(REPLACE_WITH_ADMIN_ROUTES_GLOB)",
+            "command": "echo '{\"systemMessage\": \"Routing: admin and staff screens map to docs/03-internal/. Update the workflow page for any change to fields, statuses, or steps.\"}'",
+            "statusMessage": "Doc routing"
           }
         ]
       }

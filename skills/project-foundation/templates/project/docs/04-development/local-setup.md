@@ -4,6 +4,14 @@
 
 Clone to running, with nothing assumed.
 
+## On this page
+
+- [Prerequisites](#prerequisites)
+- [Getting it running](#getting-it-running)
+- [Environment](#environment)
+- [Commands](#commands)
+- [When it does not work](#when-it-does-not-work)
+
 ## Prerequisites
 
 | Tool | Version | Check with |
