@@ -24,8 +24,8 @@ the answers that could invalidate the most work arrive first.
 3. **Build the real thing** — only the validated part, behind its seam.
 4. **Update the docs the change routed to**, in the same change — `/doc-check`.
 5. **Sweep the ledger** for triggers this step fired.
-6. **Re-plan** the next step from what was actually learned — `/plan-step`, as its own invocation
-   on the strong model, deliberately not in the tail of the execution session.
+6. **Re-plan** the next step from what was actually learned — `/plan-step`, as its own invocation,
+   deliberately not in the tail of the execution session.
 
 ## Step 1 — {{name}}
 
@@ -88,6 +88,7 @@ Rules for this page:
 - The Direction block is what stops the step being re-planned at execution time by whoever happens
   to be running. If it cannot be filled in, the architecture has not been decided yet - go and
   decide it rather than writing a step that only sounds specific.
-- Planning happens in `/plan-step`, which asks for the strong model first. Execution happens in
-  `/next-step`. Keeping them apart is the point; a plan is cheap to make and expensive to get wrong.
+- Planning happens in `/plan-step`, which recommends a model and waits before it starts. Execution
+  happens in `/next-step`. Keeping them apart is the point; a plan is cheap to make and expensive to
+  get wrong.
 -->

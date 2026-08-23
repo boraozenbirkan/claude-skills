@@ -13,10 +13,12 @@ day"* — not as a technology comparison.
 most: the decisions made here constrain everything built afterwards, and a shallow architecture
 reads exactly like a good one until something has to change. Say so in one line and pause —
 
-> Next I design the architecture. This is one of the two phases where model quality shows up in the
-> result, so it is worth a look at your status line before I start. Say go, or change it and say go.
+> Next I design the architecture. This is one of the two phases where model quality shows up most
+> in the result, so the recommendation is Opus at high effort or better. Your status line shows what
+> you are on. Say go, or change it and say go.
 
-— then carry on. One line, one pause, twice in the whole run.
+— then wait. Recommend; do not switch. If they go ahead on something weaker that is their call, and
+you proceed without arguing. One line, one pause, twice in the whole run.
 
 **In retrofit or refactor mode**, this phase reads the architecture out of the code and asks the
 operator to confirm or correct it, rather than choosing one. Refactor mode then feeds phase 4 a list

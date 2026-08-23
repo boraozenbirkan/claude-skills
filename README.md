@@ -61,8 +61,8 @@ Five ideas do most of the work:
   information.
 
 - **Planning is a separate job from building.** A weak plan costs a week; weak building costs an
-  afternoon. So `/plan-step` and `/next-step` are two skills, the planning one asks for the strong
-  model before it starts, and every step is written down with its shape, its stack delta, and the
+  afternoon. So `/plan-step` and `/next-step` are two skills, the planning one opens by recommending
+  a strong model and waiting for a yes — recommending, never switching — and every step is written down with its shape, its stack delta, and the
   pipeline stages it touches — so the agent executing it is following a decision rather than
   re-making one on whatever model it happens to be running.
 

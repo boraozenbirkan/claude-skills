@@ -12,12 +12,13 @@ strong one right up until a week has been spent on it.
 
 Before the first step is drafted, say so and pause:
 
-> Next I plan the roadmap. This is the part where a weaker model costs the most, so it is worth
-> checking your status line before I start — are the model and effort level shown there what you
-> want for planning? Say go, or change them and say go.
+> Next I plan the roadmap. This is where a weaker model costs the most, so the recommendation is
+> Opus at high effort or better. Your status line shows what you are on. Say go, or change it and
+> say go.
 
-One line, one pause. The same checkpoint is installed into the project as `/plan-step` in phase 6,
-so every re-plan after this run gets it too.
+Recommend; do not switch. If they go ahead on something weaker, proceed without arguing and note
+what was in use in the session file. One line, one pause. The same checkpoint is installed into the
+project as `/plan-step` in phase 6, so every re-plan after this run gets it too.
 
 **In refactor mode** the steps are moves rather than features, and the ordering rule sharpens:
 seams before moves, strangle rather than rewrite, every step ships, and deletion of the old path is

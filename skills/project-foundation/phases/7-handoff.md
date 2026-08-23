@@ -19,8 +19,9 @@ first sight of the mechanism that will interrupt them later; explain it once, no
 begins it.
 
 **How planning and building are split.** `/next-step` works a step; `/plan-step` plans the next one
-and asks for the strong model first. Say this explicitly — an operator who runs execution on a cheap
-model is doing the right thing, and needs to know that the planning skill is where they switch back.
+and opens by recommending a strong model and waiting. Say this explicitly — an operator who runs
+execution on a cheap model is doing the right thing, and needs to know that the planning skill will
+prompt them to switch back, and that it will never switch for them.
 
 ## Retrofits and refactors: say what is now wrong
 

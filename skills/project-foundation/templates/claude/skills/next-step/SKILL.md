@@ -65,8 +65,8 @@ Log anything skipped along the way with `/defer`.
 
 ## 7 — Stop at the planning boundary
 
-Do **not** plan step N+1 here. Planning runs under `/plan-step`, on the strong model, as its own
-invocation.
+Do **not** plan step N+1 here. Planning runs under `/plan-step`, as its own invocation, which opens
+by recommending a model for it.
 
 The reason is the model. Execution is often run on something cheap and fast, which is the right
 call for building a thing already decided and the wrong call for deciding what to build. A plan made

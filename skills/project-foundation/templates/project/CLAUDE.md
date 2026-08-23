@@ -90,12 +90,12 @@ a reason. Passing one in silence defeats the mechanism, and looks exactly like e
   is current, what it is deliberately not building, and — in its **Direction** block — the shape,
   the stack delta, and the pipeline stages it touches. Follow those rather than re-deciding them.
   Work outside the current step is a decision for {{DECIDER}}, not a matter of momentum.
-- **Planning is its own invocation, on its own model.** `/next-step` works the current step;
-  `/plan-step` plans the next one and asks for the strong model before it starts. A plan made in the
-  tail of an execution session inherits whatever model that session was running, and a weak plan
-  reads exactly like a strong one until a week has gone into it. Where the roadmap's Direction block
-  is empty or vague for the step you are on, that is a `/plan-step` job, not a gap to fill in
-  passing.
+- **Planning is its own invocation.** `/next-step` works the current step; `/plan-step` plans the
+  next one, and opens by recommending a strong model and waiting rather than switching one. A plan
+  made in the tail of an execution session inherits whatever model that session was running, and a
+  weak plan reads exactly like a strong one until a week has gone into it. Where the roadmap's
+  **Direction** block is empty or vague for the step you are on, that is a `/plan-step` job, not a
+  gap to fill in passing.
 - **Prototype before building anything uncertain.** Throwaway code that answers one question, then a
   verdict from a human, then the real thing. `/prototype`.
 - **Verify before claiming done.** {{VERIFY_COMMANDS}} must pass. If something fails, say so with

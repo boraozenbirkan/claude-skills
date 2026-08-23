@@ -1,34 +1,38 @@
 ---
 name: plan-step
-description: Plan the next roadmap step in writing — its question, its shape, its stack, and the docs it will touch — on a model strong enough to be worth trusting.
+description: Plan the next roadmap step in writing — its question, its shape, its stack, and the docs it will touch — after recommending a model worth trusting for it.
 disable-model-invocation: true
-model: opus
-effort: high
 ---
 
 # Plan step
 
 Planning and building are different jobs with different failure modes. A weak plan costs a week of
 building the wrong thing; weak building costs an afternoon. So they run separately, and this one
-runs on the strong model.
+opens by recommending the model it deserves.
 
-`model: opus` and `effort: high` in the frontmatter above apply **for the rest of this turn only**;
-the session returns to its own model on the next prompt. Change those two lines if this project
-should plan on something else.
+## 1 — Recommend the model, then wait
 
-## 1 — Confirm the model before planning
+**This skill does not change the model. It asks.**
 
-The override can be refused. An organisation allowlist that excludes the requested model leaves the
-session on whatever it was already using, silently.
+A skill cannot read the session's model or effort level reliably. The status line can, and the
+operator is looking at it. So the first thing this skill does, before reading anything else, is put
+the recommendation in front of them and stop:
 
-So **say what you are about to do and let the operator look at their status line**:
+> Before I plan {{step N}}: planning is where model quality shows up most, so the recommendation is
+> **Opus at high effort or better**. Your status line shows what you are on. Say go if that is what
+> you want, or change it and say go.
 
-> I am about to plan {{step N}}. Planning is the expensive thing to get wrong here, so this skill
-> asks for Opus at high effort — check your status line shows that. If it does not, set it and
-> re-run me.
+Then wait for the go. Not a rhetorical pause — an actual stop, before any file is read, so that
+switching costs them nothing they have to redo.
 
-Then wait. This is one line and one pause, and it is the whole point of this skill existing
-separately from `/next-step`.
+If they say go on something weaker, that is a legitimate call. Proceed without arguing, and record
+what was in use in the roadmap entry you write, so a plan made cheaply is identifiable later as one
+made cheaply.
+
+An automatic `model:` override in the frontmatter was the obvious alternative and is deliberately
+not here. It would move the operator's model without them seeing it move, it can be refused by an
+organisation allowlist without saying so, and it takes a decision about their own spend out of their
+hands.
 
 ## 2 — Read the state
 

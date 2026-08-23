@@ -141,7 +141,7 @@ Copy from [`../templates/claude/skills/`](../templates/claude/skills/) into the 
 
 | Skill | What it is for |
 |---|---|
-| `/plan-step` | Plan the next roadmap step in writing, on the strong model |
+| `/plan-step` | Recommend a planning model, then plan the next roadmap step in writing |
 | `/next-step` | Work the current roadmap step, verify it, and record what it answered |
 | `/doc-check` | Hold the current diff against the routing table and update what it hit |
 | `/defer` | Add a ledger entry with a trigger, in one line, at the moment of the decision |
@@ -153,10 +153,13 @@ run on cheap models for good reasons, and a re-plan tacked onto the end of one s
 that model — which nobody notices, because a weak plan reads exactly like a strong one until the
 week is gone.
 
-`/plan-step` carries `model: opus` and `effort: high` in its frontmatter, which applies for the rest
-of that turn and then releases. Adjust those two lines to whatever this operator's strong model is.
-The override can be refused by an organisation allowlist without saying so, which is why the skill
-also opens by asking the operator to glance at their status line.
+**`/plan-step` recommends; it does not switch.** A `model:` line in its frontmatter would work —
+it overrides for the rest of the turn — and it is deliberately absent. Moving an operator's model
+without them seeing it move takes a decision about their own spend out of their hands, the override
+can be refused by an organisation allowlist without saying so, and a skill cannot read the session
+model to check whether it landed. So the skill stops before reading anything, names the
+recommendation, and waits for a go. Set the recommended model in its opening prompt to whatever this
+operator's strong model actually is.
 
 These live in the project rather than in a personal skills directory on purpose: they are wired to
 this project's paths, they travel with the repo to teammates and CI, and cloud sessions load them

@@ -19,9 +19,9 @@ The five project skills link with `../../../docs/...`, which resolves from where
 **installed** — `<project>/.claude/skills/<name>/SKILL.md` — back to the project root. Inside this
 templates tree those paths point nowhere, which is expected. Leave them alone.
 
-`plan-step/SKILL.md` also carries `model:` and `effort:` in its frontmatter. Those are the one part
-of a template that is a live setting rather than prose — adjust them to the operator's strong model,
-and do not strip them.
+`plan-step/SKILL.md` names a recommended model in its opening prompt. Change it to whatever this
+operator's strong model is. Do not add a `model:` line to its frontmatter — the skill recommends and
+waits on purpose, rather than switching the model on someone's behalf.
 
 The paths under `project/` mirror the project root exactly, so links there resolve both here and
 after copying.

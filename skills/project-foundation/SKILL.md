@@ -74,11 +74,13 @@ conversation is gone at the next `/clear`, cannot be reviewed by anyone who was 
 gets silently re-invented by the next agent. Writing it is also the test of whether it was decided:
 a stack you cannot list and a pipeline you cannot stage were discussed, not settled.
 
-**10 — Plan on the strong model, and say so before you start.** Planning is the expensive thing to
-get wrong; execution is cheap to redo. Before phase 3 and again before phase 4, name what you are
-about to do and give the operator one pause to check the model and effort in their status line. The
-same checkpoint ships into the project as `/plan-step`, kept separate from `/next-step` so a plan
-never quietly inherits whatever model an execution session happened to be running.
+**10 — Recommend the planning model; never switch it.** Planning is the expensive thing to get
+wrong; execution is cheap to redo. Before phase 3 and again before phase 4, name what you are about
+to do, recommend the strong model, and stop until the operator says go — their status line shows
+what they are on, and the decision about their own spend is theirs. If they go ahead on something
+weaker, proceed without arguing and record what was in use. The same checkpoint ships into the
+project as `/plan-step`, kept separate from `/next-step` so a plan never quietly inherits whatever
+model an execution session happened to be running.
 
 ## Phases
 
