@@ -19,7 +19,7 @@ something you can build.
 | `docs/README.md` | Two indexes: one to **find** an answer, one to **route** a change to the pages it invalidates |
 | `docs/` tree | Project, architecture, internal handbook, development, and human-owned public docs |
 | `CONTEXT.md` | The ubiquitous language — one word per concept, so humans and agents picture the same thing |
-| `docs/01-project/roadmap.md` | Step-gated plan where each step earns its cost |
+| `docs/01-project/roadmap.md` | The arc of milestones, plus the current milestone's steps in full |
 | `docs/00-meta/deferred-ledger.md` | Everything deliberately skipped, each with a **trigger** that fires it back |
 | `CLAUDE.md` | The standing contract every agent reads |
 | `.claude/settings.json` | Permission rules and hooks that enforce what prose alone cannot |
@@ -93,7 +93,7 @@ interview phases are exactly where that costs the most.
 | 1 | [Frame and operator](phases/1-frame-and-operator.md) | You know what is being built in one sentence, and who decides |
 | 2 | [Grill the product](phases/2-grill.md) | The product frontier is empty |
 | 3 | [Design the architecture](phases/3-architecture.md) | The frontier is empty, every seam is justified, and the architecture pages are on disk |
-| 4 | [Build the roadmap](phases/4-roadmap.md) | `roadmap.md` is on disk, step 1 is unambiguous, and every deferral has a trigger |
+| 4 | [Build the roadmap](phases/4-roadmap.md) | `roadmap.md` holds the full arc, step 1 is unambiguous, and every deferral has a trigger |
 | 5 | [Scaffold the docs](phases/5-scaffold.md) | The remaining pages exist and all three index checks pass |
 | 6 | [Install the guardrails](phases/6-guardrails.md) | Rules, permissions, hooks, and project skills are in place |
 | 7 | [Hand off](phases/7-handoff.md) | The operator knows what exists and what happens next |

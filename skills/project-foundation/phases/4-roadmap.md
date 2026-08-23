@@ -4,6 +4,31 @@ A roadmap is not a list of features in the order someone thought of them. It is 
 learning**: each step buys the answer to a question, and the steps are sequenced so the answers that
 could invalidate the most work arrive first.
 
+Three tiers of depth, written at three different times:
+
+| Tier | Scope | Written |
+|---|---|---|
+| **The arc** | Every milestone, start to finish | Here, in this phase |
+| **Steps 1 and 2** | Full detail, Direction block included | Here, in this phase |
+| **Every later step** | Full detail | At the milestone boundary that reaches it |
+
+## You cannot draft the arc before phase 3
+
+Check this before writing a word. These three must already exist on disk, with this project's real
+content in them:
+
+    docs/02-architecture/technical-map.md
+    docs/02-architecture/pipelines.md
+    docs/02-architecture/modularity.md
+
+A milestone names what it proves, the technologies it brings in, and the pipeline stages it touches.
+Every one of those is a phase 3 output. Drafting milestones without them produces a plausible arc
+made of guesses, which is worse than no arc — it reads settled, so nobody revisits it.
+
+If a page is missing or thin, go back to phase 3 and finish it. The order — scope, then
+architecture, then arc, then steps — is what makes each tier derivable from the one above rather
+than invented.
+
 ## Check the model before you start
 
 Planning is the expensive thing to get wrong. Everything downstream — what gets built, in what
@@ -24,6 +49,36 @@ project as `/plan-step` in phase 6, so every re-plan after this run gets it too.
 seams before moves, strangle rather than rewrite, every step ships, and deletion of the old path is
 its own step with its own **Done when**. See
 [`../reference/existing-projects.md`](../reference/existing-projects.md).
+
+## Tier one — the arc
+
+Every milestone, start to finish, before any step is written. This is the senior-product-plus-senior-
+engineer view: what the project becomes, in what order, on what.
+
+```md
+## Milestone N — {{name}}
+
+**Proves:** {{what is true once this lands that was not true before}}
+**Brings in:** {{the technologies, services, and infrastructure that arrive here — or `nothing new`}}
+**Pipeline:** {{the stages this builds or changes, named from pipelines.md}}
+**Not in this milestone:** {{what a reasonable person expects here, and which milestone has it}}
+**Done when:** {{observable from outside}}
+```
+
+Four to seven milestones is the usual shape. Fewer and they are not milestones, they are phases of
+one long push; more and the later ones are guesses dressed as plan.
+
+**Brings in** is the line that earns the arc its cost. Knowing that payments land at milestone 3 and
+bring Stripe with them is what tells you, today, whether a payments seam belongs in the walking
+skeleton. An arc that names only outcomes and no technology has not done the work — it is a wish
+list, and it constrains nothing.
+
+**Not in this milestone** does the same job here that **Not building** does at step level, one
+altitude up, and it is the line that stops milestone 1 quietly absorbing the whole product.
+
+The arc is **revised, not sacred.** Every milestone boundary is a chance to reorder what is below
+it, and doing so is the plan working rather than failing. What it must never become is a list nobody
+touches because it looks official.
 
 ## Order by riskiest assumption
 
@@ -47,7 +102,7 @@ each replacing a fake at a seam.
 This is what "general before specific" buys: the shape is provable in days, integration risk is paid
 down at the start rather than discovered at the end, and every later step has somewhere to plug in.
 
-## The step format
+## Tier two — the step format
 
 Every step, no exceptions. Two blocks: **what it is for**, and **how it is built**.
 
@@ -91,19 +146,30 @@ Keep them short. **Shape** is a sentence or two naming real directories and one 
 document. `nothing new` is a perfectly good answer for **Stack it introduces**, and a step that
 introduces three things at once is usually two steps.
 
-## Plan two steps deep
+## Tier three — planned at the boundary, not now
 
-Write step 1 and step 2 at full detail, Direction block included. Everything after that is a **named
-step with its question and nothing else** — because the answers from steps 1 and 2 will rewrite them.
+Write steps 1 and 2 at full detail, Direction block included. Below that, write **nothing but the
+milestone rows already in the arc.**
 
-Detailing step 6 today is writing fiction that later reads as commitment. The roadmap is re-planned
-one step at a time, from what was actually learned, by `/plan-step`.
+The arc says where the project is going. The steps inside a milestone say how, and that "how"
+depends on what the milestones before it actually taught you. Writing step 9 today means guessing at
+information step 4 is going to hand you for free.
+
+Two planning moments carry the rest, both under `/plan-step`, both opening with the model
+recommendation:
+
+- **At a milestone boundary** — break the milestone now starting into its steps, revise the arc
+  below it, and write its first two steps in full.
+- **Between steps inside a milestone** — write the next step in full from what the last one
+  answered.
+
+Say both of these to the operator here, so the rhythm is expected rather than discovered.
 
 ## Write it to disk in this phase
 
 Create `docs/01-project/roadmap.md` now, from
-[the template](../templates/project/docs/01-project/roadmap.md), with steps 1 and 2 in full and the
-rest named. Do not leave it for phase 5.
+[the template](../templates/project/docs/01-project/roadmap.md), with the full arc, steps 1 and 2 in
+full, and nothing below that. Do not leave it for phase 5.
 
 A plan that exists only in the conversation is gone at the next `/clear`, cannot be reviewed by
 anyone who was not in the room, and gets silently re-invented by the next agent. The session file is
@@ -153,10 +219,11 @@ Record this in the roadmap page, because it is the rhythm every later agent inhe
 
 ## Done when
 
-`docs/01-project/roadmap.md` exists on disk; steps 1 and 2 carry every field including the Direction
-block; step 1 is unambiguous enough that an agent could start it without asking a question; steps
-beyond 2 are named with their questions only; every future need surfaced by the project type is a
-ledger entry with a trigger; and the operator has agreed that step 1 is the right first thing to
-learn.
+`docs/01-project/roadmap.md` exists on disk; the arc names every milestone with its **Proves**,
+**Brings in**, **Pipeline**, and **Not in this milestone** lines; steps 1 and 2 carry every field
+including the Direction block; nothing below step 2 is detailed; step 1 is unambiguous enough that
+an agent could start it without asking a question; every future need surfaced by the project type is
+a ledger entry with a trigger; and the operator has agreed both that the arc is right and that step
+1 is the right first thing to learn.
 
 Append to `docs/00-meta/foundation-session.md`.

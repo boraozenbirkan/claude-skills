@@ -13,8 +13,8 @@ One step of the roadmap, worked to completion and recorded honestly. Planning th
 
 Read, in this order:
 
-- [`docs/01-project/roadmap.md`](../../../docs/01-project/roadmap.md) — the current step, and what
-  it is deliberately **not** building
+- [`docs/01-project/roadmap.md`](../../../docs/01-project/roadmap.md) — the current milestone, the
+  current step, and what that step is deliberately **not** building
 - [`docs/00-meta/deferred-ledger.md`](../../../docs/00-meta/deferred-ledger.md) — did the last step
   fire any trigger? Decide each fire before starting new work
 - [`docs/00-meta/personas.md`](../../../docs/00-meta/personas.md) — who you are reporting to, and at
@@ -65,8 +65,14 @@ Log anything skipped along the way with `/defer`.
 
 ## 7 — Stop at the planning boundary
 
-Do **not** plan step N+1 here. Planning runs under `/plan-step`, as its own invocation, which opens
-by recommending a model for it.
+Do **not** plan what comes next here. Planning runs under `/plan-step`, as its own invocation, which
+opens by recommending a model for it.
+
+Say **which** planning is due, because the two are different sizes of work:
+
+- If this step satisfied the current milestone's **Done when**, the next `/plan-step` is a
+  **milestone boundary** — it revises the arc and breaks the next milestone open.
+- Otherwise it is the next step inside this milestone.
 
 The reason is the model. Execution is often run on something cheap and fast, which is the right
 call for building a thing already decided and the wrong call for deciding what to build. A plan made
@@ -84,7 +90,8 @@ next step will ask. In the operator's register.
 
 Then, **last and together**, a numbered **Your turn** block with everything you need back — the
 verdict you are waiting on, the placeholder only they can fill, the fired trigger they must rule on,
-and **run `/plan-step` when ready** as its own item, naming the model it wants. Repeat each one even
+and **run `/plan-step` when ready** as its own item, saying whether it is a milestone boundary or
+the next step, and naming the model it recommends. Repeat each one even
 if it appeared inline above; a step report is long and the middle of it gets skimmed.
 
 Mark what blocks. "Step N+1 cannot start until you confirm the scope" and "answer whenever" deserve

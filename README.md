@@ -44,7 +44,7 @@ What it leaves behind in the target project:
 Everything it installs is **project-local** — `<project>/CLAUDE.md` and `<project>/.claude/`,
 committed with the repo. Nothing is written to `~/.claude/`.
 
-Five ideas do most of the work:
+Six ideas do most of the work:
 
 - **Collect the asks at the end.** Every response that needs something from a person ends with a
   numbered `Your turn` block repeating every question and action — even the ones already asked
@@ -54,17 +54,25 @@ Five ideas do most of the work:
 - **Routing over discipline.** Docs rot because nobody can tell, at the moment of a change, which
   page it invalidated. A routing table of matchable triggers turns that from a judgement call into a
   grep.
+
 - **Defer with a trigger, never silently.** Skipping rate limiting for a demo is fine; forgetting is
   how it ships. Every omission gets an observable condition that brings it back.
+
 - **Plan only what is load-bearing.** Settle what is hard to reverse, constrains other decisions, or
   is forced from outside. Everything else is decided at the step that needs it, with real
   information.
 
+- **Three tiers of plan, written at three times.** The **arc** of every milestone — what each one
+  proves, and which technologies and pipeline stages arrive with it — is written up front, once
+  scope and architecture are settled. The current milestone's next two steps are written in full.
+  Nothing below that is written until its milestone boundary, because the milestones above it will
+  change what it should say.
+
 - **Planning is a separate job from building.** A weak plan costs a week; weak building costs an
-  afternoon. So `/plan-step` and `/next-step` are two skills, the planning one opens by recommending
-  a strong model and waiting for a yes — recommending, never switching — and every step is written down with its shape, its stack delta, and the
-  pipeline stages it touches — so the agent executing it is following a decision rather than
-  re-making one on whatever model it happens to be running.
+  afternoon. So `/plan-step` and `/next-step` are two skills. The planning one opens by recommending
+  a strong model and waiting for a yes — recommending, never switching — and writes each step down
+  with its shape, its stack delta, and the pipeline stages it touches, so the agent executing it
+  follows a decision rather than re-making one on whatever model it happens to be running.
 
 ## Credits
 

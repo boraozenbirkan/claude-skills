@@ -43,6 +43,7 @@ here — do not let this grow into a second, competing source of truth.
 
 - **Model and effort:** {{what was in use while this plan was made}}
 - **Riskiest assumption:** {{what}}
+- **The arc:** {{milestone names, in order}}
 - **Step 1:** {{the question it answers}}
 - **Deferred:** {{ledger ids}}
 

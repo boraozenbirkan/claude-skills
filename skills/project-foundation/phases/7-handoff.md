@@ -15,11 +15,17 @@ one is not a surprise.
 **What is deferred.** The ledger's size and its two or three nearest triggers. This is the operator's
 first sight of the mechanism that will interrupt them later; explain it once, now.
 
-**Where step 1 starts.** The question step 1 answers, its Direction block, and the command that
-begins it.
+**The arc, and where step 1 starts.** Walk the milestones in order — what each proves and what it
+brings in — then the question step 1 answers, its Direction block, and the command that begins it.
+The arc is the part a non-technical operator will actually hold in their head, so lead with it.
 
-**How planning and building are split.** `/next-step` works a step; `/plan-step` plans the next one
-and opens by recommending a strong model and waiting. Say this explicitly — an operator who runs
+Say plainly that the arc is **revised at every milestone boundary**, and that reordering it is the
+plan working rather than failing. An operator who thinks the arc is a commitment will resist the
+first revision, which is exactly the one worth making.
+
+**How planning and building are split.** `/next-step` works a step; `/plan-step` plans what comes
+after — the next step, or at a milestone boundary the revised arc and the next milestone broken open
+— and opens by recommending a strong model and waiting. Say this explicitly — an operator who runs
 execution on a cheap model is doing the right thing, and needs to know that the planning skill will
 prompt them to switch back, and that it will never switch for them.
 
